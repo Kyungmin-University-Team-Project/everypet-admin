@@ -1,70 +1,95 @@
-# Getting Started with Create React App
+# 🐶EveryPet (팀 프로젝트)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## ✉️ 커밋 메시지 규칙
 
-## Available Scripts
+https://velog.io/@jiheon/Git-Commit-message-규칙
 
-In the project directory, you can run:
+## 👥 팀원
 
-### `npm start`
+### 🔥 <span style="color:#3CB371; font-family: 'Comic Sans MS', cursive, sans-serif;">[Back end] 이용호</span>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### ⭐️ <span style="color:#FFA500; font-family: 'Comic Sans MS', cursive, sans-serif;">[Back end] 노희철</span>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 🌑 <span style="color:#9400D3; font-family: 'Comic Sans MS', cursive, sans-serif;">[Front end] 총괄 이관용</span>
 
-### `npm test`
+### ⚡️ <span style="color:#FF6347; font-family: 'Comic Sans MS', cursive, sans-serif;">[Front end] 대표 박민규</span>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 프로젝트 실행 방법
 
-### `npm run build`
+알아서 실행하세요
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🐳 Docker로 실행하기
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+root 디렉토리에서 다음 명령어를 실행해주세요.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+docker-compose up
+```
 
-### `npm run eject`
+코드가 변경되었을떄 최신 이미지를 받아오고 컨테이너재시작하려면 다음 명령어를 실행해주세요.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+docker-compose up --build
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+컨테이너를 종료하려면 다음 명령어를 실행해주세요.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+docker-compose down
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🧬 스웨거
 
-## Learn More
+[스웨거 링크](http://localhost:8080/swagger-ui/index.html)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🛠️ 기술스택
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+| Category   | Technologies and Tools                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| ---------- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Language   | ![Java](https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white) ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) ![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white)                                                                                                                                                             |
+| IDE        | ![IntelliJ IDEA](https://img.shields.io/badge/IntelliJ_IDEA-000000?style=for-the-badge&logo=intellij-idea&logoColor=white) ![Visual Studio Code](https://img.shields.io/badge/Visual_Studio_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| Framework  | ![Spring Framework](https://img.shields.io/badge/Spring_Framework-6DB33F?style=for-the-badge&logo=spring&logoColor=white) ![MyBatis](https://img.shields.io/badge/MyBatis-339933?style=for-the-badge&logo=mybatis&logoColor=white)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| Build Tool | ![Apache Maven](https://img.shields.io/badge/Apache_Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white) ![npm](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| Database   | ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white) ![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Frontend   | ![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white) ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)                                                                                                                                                                                                                                                             |
+| Library    | ![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white) ![Spring Security](https://img.shields.io/badge/Spring_Security-6DB33F?style=for-the-badge&logo=spring-security&logoColor=white) ![Swagger](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=black) ![OAuth2](https://img.shields.io/badge/OAuth2-2E86C1?style=for-the-badge&logo=oauth&logoColor=white) ![Redux](https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=redux&logoColor=white)                                                                                                                                                                                                                                        |
+| Server     | ![Apache Tomcat](https://img.shields.io/badge/Apache_Tomcat-F8DC75?style=for-the-badge&logo=apache-tomcat&logoColor=black)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| Tool       | ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white) ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white) ![Storybook](https://img.shields.io/badge/Storybook-FF4785?style=for-the-badge&logo=storybook&logoColor=white) ![Google Cloud](https://img.shields.io/badge/Google_Cloud-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white) ![Asana](https://img.shields.io/badge/Asana-27384D?style=for-the-badge&logo=asana&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white) ![AWS](https://img.shields.io/badge/amazon_web_services-232F3E?style=for-the-badge&logo=github-actions&logoColor=white) |
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🎯서비스 핵심기능
 
-### Analyzing the Bundle Size
+```
+👨‍👨‍👧 회원 : 로그인 | 회원가입 | 메일 인증 | 회원정보 수정 | 비밀번호 변경 | 비밀번호 찾기 | 아이디 찾기 | 임시 비밀번호 발급
+🏡 마이페이지 : 회원정보 수정 | 회원탈퇴
+🛍️ 상품: 상품 조회 | 장바구니 | 상품 리뷰
+📊 검색: 실시간 검색어 순위, 상품 검색
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<details>
+<summary>핵심기능 #1. 로그인 JWT</summary>
+<div markdown="1">
 
-### Making a Progressive Web App
+>  <p style="color:black">뭘봐</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+</div>
+</details>
 
-### Advanced Configuration
+<p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<details>
+<summary>핵심기능 #2. 메일 인증</summary>
+<div markdown="1">
 
-### Deployment
+> dd
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+</div>
+</details>
 
-### `npm run build` fails to minify
+## 📖 문제가 많은 ERD
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+🚧 공사중
+
+## 😇 프로젝트의 정상화 과정
+
+![image](https://image.fmkorea.com/files/attach/new4/20240808/7338495769_6775339301_e7d40bafd4fba74fe0f98d74c84c0650.jpg )
