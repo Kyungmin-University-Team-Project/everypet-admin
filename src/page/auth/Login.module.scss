@@ -1,0 +1,144 @@
+.login_box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  border: 1px solid #d9d9d9;
+  border-radius: 10px;
+
+  padding: 50px;
+
+  .login_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .login_title {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    color: #75acff;
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+
+    span {
+      font-size: 18px;
+    }
+  }
+
+  .login_input {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+  }
+
+  .input_label {
+    width: 300px;
+
+    .login_text {
+      margin-bottom: 5px;
+    }
+  }
+
+  .input_field {
+    position: relative;
+    width: 100%;
+  }
+
+  .input_input {
+    width: 100%;
+    height: 2.6rem;
+    padding: 0.4rem;
+    font-size: 0.95rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #333333;
+    transition: border-color 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: #4a8cf0;
+    }
+  }
+
+  .checkbox_label {
+    display: flex;
+    align-items: center;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    color: #000000;
+
+  }
+
+  .login_checkbox {
+    margin-right: 0.5rem;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    cursor: pointer;
+    background-color: #fff;
+
+    &:checked {
+      background-color: #4a8cf0;
+      border-color: #4a8cf0;
+
+      &::after {
+        content: '\2714';
+        font-size: 16px;
+        color: white;
+        display: block;
+        text-align: center;
+        line-height: 20px;
+      }
+    }
+  }
+
+
+  .login_btn {
+    width: 100%;
+    height: 2.8rem;
+    background-color: #4a8cf0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1.5rem;
+
+    &:hover {
+      background-color: #3a78d4;
+    }
+  }
+
+  .login_link {
+    margin-top: 1.2rem;
+    font-size: 0.85rem;
+    text-align: center;
+    color: #666666;
+
+    a {
+      color: #4a8cf0;
+      margin: 0 5px;
+    }
+  }
+
+  .login_api {
+    margin-top: 1.2rem;
+    text-align: center;
+  }
+
+}

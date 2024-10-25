@@ -1,0 +1,92 @@
+.find_form_container {
+  max-width: 400px;
+  margin: 100px auto 0 auto;
+  padding: 40px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  text-align: center;
+
+  .tab_container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    .tab {
+      flex: 1;
+      padding: 10px;
+      cursor: pointer;
+      border: none;
+      background-color: #f7f7f7;
+      color: #666;
+      font-size: 1rem;
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s ease;
+
+      &.active {
+        background-color: #fff;
+        color: #333;
+        border-bottom: 2px solid #4a8cf0;
+      }
+    }
+  }
+
+  .find_container {
+    text-align: left;
+
+    .find_text {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #333;
+      text-align: center;
+    }
+
+    .find_form {
+      .ul_form {
+        list-style: none;
+        padding: 0;
+
+        li {
+          margin-bottom: 10px;
+        }
+
+      }
+
+      .ul_form_btn {
+        width: 100%;
+        padding: 12px;
+        font-size: 1rem;
+        font-weight: bold;
+        background-color: #4a8cf0;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #3a78d4;
+        }
+      }
+      .find_input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1rem;
+        box-sizing: border-box;
+      }
+
+      .authentication_container{
+        display: flex;
+        flex-direction: column;
+
+        gap: 10px;
+
+        margin-top: 50px;
+      }
+
+    }
+  }
+}
