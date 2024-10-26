@@ -39,7 +39,7 @@ const Login = () => {
             const encryptedAccess = encryptToken(response.access);
             dispatch(loginState({username: response.user, accessToken: encryptedAccess}));
 
-            navigate('/');
+            navigate('/dashBoard');
         } catch (error) {
             console.log(error);
         }
@@ -104,7 +104,7 @@ const Login = () => {
                             </div>
                             <button className={styles.login_btn}>로그인</button>
                             <p className={styles.login_link}>
-                                <Link to="/idFind">아이디/비밀번호 찾기 |</Link>
+                                <Link to="/src/page/auth/IdFind">아이디/비밀번호 찾기 |</Link>
                                 <Link to="/agreement">회원가입</Link>
                             </p>
                         </form>
