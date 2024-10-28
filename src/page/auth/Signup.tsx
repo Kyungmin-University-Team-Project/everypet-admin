@@ -6,7 +6,7 @@ import styles from "./Signup.module.scss";
 import "@fortawesome/fontawesome-free/css/all.css";
 import axios from "axios";
 import {sendVerificationEmail, signUpLogin, verifyCode} from "../../utils/auth/AuthAPI";
-import {Code, Join} from "../../typing/signup";
+import {Code, Join} from "../../typing/auth/signup";
 
 const validateInput = (value: string, allowKorean: boolean, allowEnglish: boolean) => {
     const hasKorean = /[ㄱ-ㅎ|ㅏ-ㅣ가-힣]/.test(value);

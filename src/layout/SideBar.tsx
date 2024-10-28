@@ -20,9 +20,9 @@ const SideBar = () => {
                 <h3>사장님</h3>
             </header>
             <nav className={styles.navContainer}>
-                {links.map((link, index) => (
+                {links.map((link, _index) => (
                     <NavLink
-                        key={index}
+                        key={link.path}
                         className={({ isActive }) =>
                             isActive ? `${styles.nav} ${styles.active}` : styles.nav
                         }

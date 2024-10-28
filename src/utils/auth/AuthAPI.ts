@@ -1,7 +1,7 @@
 import axios, {AxiosError, AxiosRequestConfig, AxiosResponse} from 'axios';
 import {jwtDecode} from 'jwt-decode';
-import {LoginData} from "../../typing/login";
-import {Join} from "../../typing/signup";
+import {LoginData} from "../../typing/auth/login";
+import {Join} from "../../typing/auth/signup";
 
 const api = axios.create({ baseURL: 'http://localhost:8080' });
 

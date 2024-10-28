@@ -1,3 +1,5 @@
+@import '../scss/button';
+
 .pagination {
   display: flex;
   justify-content: center;
@@ -5,6 +7,7 @@
   padding: 10px;
 
   gap: 20px;
+
 
   button {
     border: 1px solid #ddd;
@@ -32,19 +35,21 @@
   }
 }
 
-
 .gridContainer {
   width: 100%;
   border: 1px solid var(--gray-light);
   border-radius: 8px;
-  overflow: hidden;
   background-color: #ffffff;
 
+  overflow-y: scroll;
 
   .gridHeader, .gridRow {
     display: grid;
-    grid-template-columns: 50px 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 50px repeat(5, 1fr);
+
     align-items: center;
+    justify-items: center;
+
     padding: 12px;
 
     cursor: pointer;
@@ -66,13 +71,11 @@
   }
 
   .statusComplete {
-    color: #28a745;
-    font-weight: bold;
+    @extend %greenButton;
   }
 
   .statusPending {
-    color: #dc3545;
-    font-weight: bold;
+    @extend %redButton;
   }
 
 }

@@ -1,0 +1,36 @@
+%button {
+  font-weight: bold;
+  width: 100px;
+
+  padding: 2px 0;
+
+  border-radius: 10px;
+}
+
+%greenButton {
+  @extend %button;
+
+  color: #0FBC34;
+  background-color: #AEF096;
+}
+
+%redButton {
+  @extend %button;
+
+  color: #FF4747;
+  background-color: #FFCDCD;
+}
+
+%yellowButton {
+  @extend %button;
+
+  color: #D7964C;
+  background-color: #FFE89E;
+}
+
+%grayButton {
+  @extend %button;
+
+  color: #656565;
+  background-color: #F0F0F0;
+}
