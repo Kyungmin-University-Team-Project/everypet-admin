@@ -9,7 +9,7 @@ const headers = [
     {key: 'category', label: '문의 카테고리'},
     {key: 'name', label: '고객 이름'},
     {key: 'date', label: '문의 날짜'},
-    {key: 'status', label: '답변 상태'},
+    {key: 'answerStatus', label: '답변 상태'},
 ];
 
 const CustomerInquiries = () => {

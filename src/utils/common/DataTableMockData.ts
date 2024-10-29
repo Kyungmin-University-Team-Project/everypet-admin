@@ -3,12 +3,12 @@ interface DataItem {
     category: string;
     name: string;
     date: string;
-    status: string;
+    answerStatus: string;
 }
 
 const categories = ['배송', '제품 품질', '환불'];
 const names = ['콩콩이주인', '샘플 이름 데이터 A', '샘플 이름 데이터 B', '샘플 이름 데이터 C', '샘플 이름 데이터 D'];
-const statuses = ['완료', '미완료'];
+const status = ['완료', '미완료'];
 
 function getRandomItem(array: any[]) {
     return array[Math.floor(Math.random() * array.length)];
@@ -29,5 +29,5 @@ export const mockData: DataItem[] = Array.from({ length: 50 }, (_, index) => ({
     category: getRandomItem(categories),
     name: getRandomItem(names),
     date: generateRandomDate(),
-    status: getRandomItem(statuses),
+    answerStatus: getRandomItem(status),
 }));
