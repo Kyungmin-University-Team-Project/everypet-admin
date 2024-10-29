@@ -30,4 +30,6 @@ body, h1, h2, h3, h4, h5, h6, p, blockquote, pre, dl, dd, ol, ul, figure {
   display: flex;
   width: 100vw;
   height: 100vh;
+
+  min-height: 600px; /* 최소 높이를 설정 */
 }

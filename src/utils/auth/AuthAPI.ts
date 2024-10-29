@@ -1,16 +1,9 @@
 import axios, {AxiosError, AxiosRequestConfig, AxiosResponse} from 'axios';
-
-// jwt 4.0 이상
 import {jwtDecode} from 'jwt-decode';
-import {LoginData} from "../../typing/login";
-import {Join} from "../../typing/signup";
+import {LoginData} from "../../typing/auth/login";
+import {Join} from "../../typing/auth/signup";
 
-export interface ResponseData {
-    access: string;
-    user: string;
-}
-
-const api = axios.create({baseURL: 'http://localhost:8080'});
+const api = axios.create({ baseURL: 'http://localhost:8080' });
 
 // 401 에러 처리
 api.interceptors.request.use(
@@ -20,22 +13,21 @@ api.interceptors.request.use(
     async function (error: AxiosError) {
         if (error.response && error.response.status === 401) {
             try {
-                let errorConfig: AxiosRequestConfig = error.config || {}; // errorConfig가 undefined인 경우 빈 객체로 설정
-                const {data} = await axios.post('access/refresh'); // axios로 요청 보내기
+                let errorConfig: AxiosRequestConfig = error.config || {};
+                const { data } = await axios.post('access/refresh');
                 if (data) {
-                    const {access} = data;
+                    const { access } = data;
                     localStorage.removeItem('every-pet-ceo-access');
                     localStorage.setItem('every-pet-ceo-access', access);
                     if (errorConfig.headers) {
                         errorConfig.headers['Authorization'] = `Bearer ${access}`; // 새로운 토큰으로 헤더 업데이트
                     } else {
-                        errorConfig.headers = {Authorization: `Bearer ${access}`}; // 헤더가 없는 경우 새로 생성
+                        errorConfig.headers = { Authorization: `Bearer ${access}` }; // 헤더가 없는 경우 새로 생성
                     }
                     return axios.request(errorConfig); // 기존 요청 재시도
                 }
             } catch (e) {
                 localStorage.removeItem('every-pet-ceo-access');
-                console.log(e);
                 throw e;
             }
         }
@@ -43,28 +35,21 @@ api.interceptors.request.use(
     }
 );
 
-export const login = async ({memberId, memberPwd}: LoginData): Promise<any> => {
-    const data = {memberId, memberPwd};
+export const login = async ({ memberId, memberPwd }: LoginData): Promise<any> => {
+    const data = { memberId, memberPwd };
 
-    console.log("Payload sent to server:", JSON.stringify(data, null, 2));
     try {
         const response: AxiosResponse<any> = await api.post('/signin', data);
 
-        console.log("Server response:", response.data);
-
         const access = response.headers['access'];
-
         const decodedToken: any = jwtDecode(access);
         const username = decodedToken.username;
 
-        const responseData: ResponseData = {
+        return {
             access: access,
             user: username
         };
 
-        console.log('Parsed Server Response Data:', responseData);
-
-        return responseData;
     } catch (error) {
         if (axios.isAxiosError(error) && error.response) {
             console.error("Error response data:", error.response.data);
@@ -78,10 +63,8 @@ export const login = async ({memberId, memberPwd}: LoginData): Promise<any> => {
 };
 
 export const signUpLogin = async (user: Join): Promise<any> => {
-    console.log("Payload sent to server:", JSON.stringify(user, null, 2));
     try {
         const response: AxiosResponse<any> = await api.post('/member/signup', user);
-        console.log("Server response:", response.data);
         return response.data;
     } catch (error) {
         if (axios.isAxiosError(error) && error.response) {
@@ -95,10 +78,8 @@ export const signUpLogin = async (user: Join): Promise<any> => {
     }
 };
 
-export const sendVerificationEmail = async ({purpose, to}: { purpose: string; to: string }): Promise<{
-    success: boolean
-}> => {
-    const data = {purpose, to};
+export const sendVerificationEmail = async ({ purpose, to }: { purpose: string; to: string }): Promise<{ success: boolean }> => {
+    const data = { purpose, to };
     const response = await api.post('/send-mail/code', data, {
         headers: {
             'Content-Type': 'application/json'
@@ -108,27 +89,24 @@ export const sendVerificationEmail = async ({purpose, to}: { purpose: string; to
     return response.data;
 };
 
-export const verifyCode = async ({purpose, code}: { purpose: string; code: string; }): Promise<{
-    success: boolean
-}> => {
-    const data = {purpose, code};
+export const verifyCode = async ({ purpose, code }: { purpose: string; code: string; }): Promise<{ success: boolean }> => {
+    const data = { purpose, code };
     const response = await api.post('/send-mail/code/verify', data, {
         headers: {
             'Content-Type': 'application/json'
         }
     });
-    console.log(response.data)
 
     return response.data;
 };
 
-export const passwordFind = async ({email, memberId}: { email: string, memberId: string }) => {
-    const data = {email, memberId};
+// 비밀번호 찾기
+export const passwordFind = async ({ email, memberId }: { email: string, memberId: string }) => {
+    const data = { email, memberId };
     const response = await api.post('/member/password/reset', data, {
         headers: {
             'Content-Type': 'application/json'
         }
     });
-    console.log(response.data);
     return response.data;
-}
+};

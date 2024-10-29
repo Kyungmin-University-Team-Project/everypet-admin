@@ -1,6 +1,16 @@
 import React from 'react';
 import styles from './CustomerInquiries.module.scss';
-import CustomerInquiriesGrid from "../../component/CustomerInquiriesGrid";
+import DataTableGrid from "../../component/DataTableGrid";
+import {mockData} from "../../utils/common/DataTableMockData";
+
+// 테이블 헤더 설정
+const headers = [
+    {key: 'id', label: '문의번호'},
+    {key: 'category', label: '문의 카테고리'},
+    {key: 'name', label: '고객 이름'},
+    {key: 'date', label: '문의 날짜'},
+    {key: 'answerStatus', label: '답변 상태'},
+];
 
 const CustomerInquiries = () => {
     return (
@@ -9,7 +19,7 @@ const CustomerInquiries = () => {
                 <span className={styles.title}>고객문의</span>
                 <div className={styles.searchFilterContainer}>
                     <div className={styles.filterItem}>
-                        <label className={styles.label}>검색</label>
+                        <span className={styles.label}>검색</span>
                         <div className={styles.inputWrapper}>
                             <input
                                 type="text"
@@ -20,7 +30,7 @@ const CustomerInquiries = () => {
                         </div>
                     </div>
                     <div className={styles.filterItem}>
-                        <label className={styles.label}>문의 카테고리</label>
+                        <span className={styles.label}>문의 카테고리</span>
                         <select className={styles.select}>
                             <option>배송</option>
                             <option>제품 품질</option>
@@ -28,7 +38,7 @@ const CustomerInquiries = () => {
                         </select>
                     </div>
                     <div className={styles.filterItem}>
-                        <label className={styles.label}>답변 상태</label>
+                        <span className={styles.label}>답변 상태</span>
                         <select className={styles.select}>
                             <option>완료</option>
                             <option>미완료</option>
@@ -37,8 +47,7 @@ const CustomerInquiries = () => {
                     <button className={styles.searchButton}>검색하기</button>
                 </div>
             </div>
-
-            <CustomerInquiriesGrid/>
+            <DataTableGrid columnCount={headers.length + 1} headers={headers} data={mockData}/>
         </div>
     );
 };

@@ -2,7 +2,7 @@ import React, {ChangeEvent, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import styles from "./Agreement.module.scss";
 import axios from "axios";
-import {AgreementJoin} from "../../typing/signup";
+import {AgreementJoin} from "../../typing/auth/signup";
 
 const Agreement: React.FC = () => {
     const [allIsChecked, setAllIsChecked] = useState<boolean>(false);
