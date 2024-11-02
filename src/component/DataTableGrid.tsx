@@ -4,6 +4,7 @@ import {DataTableGridProps} from "../typing/component/dataTable";
 import StatusButton from "./StatusButton";
 
 
+// DataTableGrid 는 헤더(컬럼이름), 컬럼카운트(컬럼개수), 데이터(보여줄 데이터) 를 넘겨 받아서 보여줌
 const DataTableGrid: React.FC<DataTableGridProps> = ({headers, columnCount, data}) => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10; // 한 페이지당 10개씩 표시
@@ -11,6 +12,7 @@ const DataTableGrid: React.FC<DataTableGridProps> = ({headers, columnCount, data
     const totalPages = Math.ceil(data.length / itemsPerPage);
     const currentData = data.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
+    // 컬럼카운트에 따라 유동적으로 그리드 변경
     const gridTemplateColumnsStyle = {
         gridTemplateColumns: `50px repeat(${columnCount - 1}, 1fr)`,
     };

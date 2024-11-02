@@ -17,7 +17,7 @@ const StatusButton = ({
                       }: StatusButtonProps) => {
 
     // 각 상태에 맞는 클래스 이름 반환
-    const getStatusClass = (): string => {
+    const getStatusClass = () => {
         // orderStatus 조건
         if (orderStatus) {
             switch (orderStatus) {
@@ -69,7 +69,6 @@ const StatusButton = ({
                     return '';
             }
         }
-        return '';
     };
 
     return (
