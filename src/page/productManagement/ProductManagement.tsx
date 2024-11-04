@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useRef, useState} from 'react';
 import styles from './ProductManagement.module.scss'
 import DataTableGrid from "../../component/DataTableGrid";
 import {productMockData} from "../../utils/common/ProductRandom";
-import SearchInput from "../../component/SearchInput";
+import ProductOrderModal from "./ProductOrderModal";
+import ReactApexChart from 'react-apexcharts';
+import {ApexOptions} from "apexcharts";
 
 // 테이블 헤더 설정
 const headers = [
@@ -15,44 +17,50 @@ const headers = [
     { key: 'productPrice', label: '상품 금액' },
 ];
 
+
+
 const ProductManagement = () => {
 
-    const placeHolder = "카테 고리, 상품 이름 검색"
 
-    // 추후에 api 개발시 연결
-    const searchFn = (searchInput : string) => {
-        console.log(searchInput);
-    }
 
     return (
-        <div className={styles.container}>
-            <div className={styles.header}>
-                <span className={styles.title}>상품관리</span>
-                <div className={styles.searchFilterContainer}>
-                    <SearchInput placeHolder={placeHolder} searchFn={searchFn}/>
-                    <div className={styles.filterItem}>
-                        <span className={styles.label}>판매 상태</span>
-                        <select className={styles.select}>
-                            <option>판매중</option>
-                            <option>매진</option>
-                        </select>
-                    </div>
-                    <div className={styles.filterItem}>
-                        <span className={styles.label}>재고 상태</span>
-                        <select className={styles.select}>
-                            <option>50개 미만</option>
-                            <option>100개 미만</option>
-                            <option>100개 이상</option>
-                        </select>
-                    </div>
-                    <button className={styles.searchButton}>검색하기</button>
-                </div>
-            </div>
-            <DataTableGrid
-                columnCount={headers.length + 1}
-                columns={headers}
-                rowData={productMockData}
-            />
+        <div className={styles.container} >
+                        <div className={styles.header}>
+                            <span className={styles.title}>상품관리</span>
+                            <div className={styles.searchFilterContainer}>
+                                <div className={styles.filterItem}>
+                                    <span className={styles.label}>검색</span>
+                                    <div className={styles.inputWrapper}>
+                                        <input
+                                            type="text"
+                                            placeholder="검색어를 입력해 주세요"
+                                            className={styles.searchInput}
+                                        />
+                                        <i className="fas fa-search"></i> {/* Font Awesome 아이콘 */}
+                                    </div>
+                                </div>
+                                <div className={styles.filterItem}>
+                                    <span className={styles.label}>판매 상태</span>
+                                    <select className={styles.select}>
+                                        <option>판매중</option>
+                                        <option>매진</option>
+                                    </select>
+                                </div>
+                                <div className={styles.filterItem}>
+                                    <span className={styles.label}>재고 상태</span>
+                                    <select className={styles.select}>
+                                        <option>50개 미만</option>
+                                        <option>100개 미만</option>
+                                        <option>100개 이상</option>
+                                    </select>
+                                </div>
+                                <button className={styles.searchButton}>검색하기</button>
+                                {/* Modal Component */}
+
+                                <ProductOrderModal/>
+                            </div>
+                        </div>
+            <DataTableGrid columnCount={headers.length + 1} headers={headers} data={productMockData}/>
         </div>
     );
 };
