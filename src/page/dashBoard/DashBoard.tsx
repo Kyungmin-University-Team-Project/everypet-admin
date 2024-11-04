@@ -7,7 +7,7 @@ const DashBoard = () => {
 
     const chartOptions: ApexOptions = {
         chart: {
-            type: 'line', // 'line'과 같은 리터럴 타입을 사용
+            type: 'line', // 'line'과 같은 리터럴 타입을 사용 !
         },
         // chartSeries data와 개수 맞추어야 카테고리 이름이 나온다.
         xaxis: {
