@@ -3,14 +3,22 @@ import styles from './DataTableGrid.module.scss';
 import {DataTableGridProps} from "../typing/component/dataTable";
 import StatusButton from "./StatusButton";
 
+/**
+ * 데이터 테이블을 렌더링하는 컴포넌트입니다.
+ *
+ * @param columns  - 데이터 테이블의 컬럼 정보 배열.
+ * @param columnCount - 테이블의 총 컬럼 개수.
+ * @param rowData - 데이터 테이블에 표시할 데이터 배열.
 
-// DataTableGrid 는 헤더(컬럼이름), 컬럼카운트(컬럼개수), 데이터(보여줄 데이터) 를 넘겨 받아서 보여줌
-const DataTableGrid: React.FC<DataTableGridProps> = ({headers, columnCount, data}) => {
+ * @returns 데이터 테이블 형식의 컴포넌트 렌더링
+ */
+
+const DataTableGrid: React.FC<DataTableGridProps> = ({columns, columnCount, rowData}) => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10; // 한 페이지당 10개씩 표시
 
-    const totalPages = Math.ceil(data.length / itemsPerPage);
-    const currentData = data.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+    const totalPages = Math.ceil(rowData.length / itemsPerPage);
+    const currentData = rowData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
     // 컬럼카운트에 따라 유동적으로 그리드 변경
     const gridTemplateColumnsStyle = {
@@ -23,13 +31,12 @@ const DataTableGrid: React.FC<DataTableGridProps> = ({headers, columnCount, data
 
     // 이부분을 이용해 모달창을 띄워서 정보를 보여주는 작업을 진행
     // 또는 각각의 번호를 이용해서
-    const consoleRow = (e : any) => {
+    const consoleRow = (e: any) => {
         console.log(e)
     }
 
     return (
         <>
-            {/* 페이지네이션 버튼 */}
             <div className={styles.pagination}>
                 {Array.from({length: totalPages}, (_, index) => (
                     <button
@@ -47,7 +54,7 @@ const DataTableGrid: React.FC<DataTableGridProps> = ({headers, columnCount, data
                 {/* 헤더 */}
                 <div className={styles.gridHeader} style={gridTemplateColumnsStyle}>
                     <input type="checkbox"/>
-                    {headers.map((header) => (
+                    {columns.map((header) => (
                         <span key={header.key}>{header.label}</span>
                     ))}
                 </div>
@@ -62,7 +69,7 @@ const DataTableGrid: React.FC<DataTableGridProps> = ({headers, columnCount, data
                             onClick={() => consoleRow(item)}
                         >
                             <input type="checkbox"/>
-                            {headers.map((header) => {
+                            {columns.map((header) => {
                                 if (header.key === "orderStatus") {
                                     return (
                                         <StatusButton

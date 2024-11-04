@@ -47,7 +47,10 @@ const CustomerInquiries = () => {
                     <button className={styles.searchButton}>검색하기</button>
                 </div>
             </div>
-            <DataTableGrid columnCount={headers.length + 1} headers={headers} data={mockData}/>
+            <DataTableGrid
+                columnCount={headers.length + 1}
+                columns={headers}
+                rowData={mockData}/>
         </div>
     );
 };

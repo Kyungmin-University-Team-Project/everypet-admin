@@ -1,13 +1,13 @@
 .container {
   width: 300px;
   min-width: 180px;
-  border-right: 1px solid #cccccc;
+  border-right: 1px solid var(--primary-border);
 
   .header {
     display: flex;
     flex-direction: column;
 
-    padding-left: 20px;
+    margin-left: 20px;
 
     color: var(--primary-color);
 
@@ -50,11 +50,11 @@
 
     .icon {
       margin-right: 10px;
-      font-size: 1.5em;
+      font-size: 36px;
     }
 
     .label {
-      font-size: 1em;
+      font-size: 18px;
     }
 
   }

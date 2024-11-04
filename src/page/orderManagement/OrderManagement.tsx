@@ -1,9 +1,10 @@
 import React from 'react';
-import DataTableGrid from "../../component/DataTableGrid";
 import styles from './OrderManagement.module.scss';
 
-// 테이블 헤더 설정
-const headers = [
+import DataTableGrid from "../../component/DataTableGrid";
+
+// 테이블 컬럼 설정
+const columns = [
     {key: 'id', label: '주문번호'},
     {key: 'orderDate', label: '주문날짜'},
     {key: 'customerName', label: '고객 이름'},
@@ -60,9 +61,9 @@ const OrderManagement = () => {
                 </div>
             </div>
             <DataTableGrid
-                headers={headers}
-                data={mockData}
-                columnCount={headers.length + 1} // 체크박스를 포함한 컬럼 수
+                columns={columns}
+                columnCount={columns.length + 1}
+                rowData={mockData}
             />
         </div>
     );
