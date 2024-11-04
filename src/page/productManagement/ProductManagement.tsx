@@ -60,7 +60,10 @@ const ProductManagement = () => {
                                 <ProductOrderModal/>
                             </div>
                         </div>
-            <DataTableGrid columnCount={headers.length + 1} headers={headers} data={productMockData}/>
+            <DataTableGrid
+                columnCount={headers.length + 1}
+                columns={headers}
+                rowData={productMockData}/>
         </div>
     );
 };
