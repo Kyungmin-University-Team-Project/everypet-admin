@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './OrderManagement.module.scss';
-
 import DataTableGrid from "../../component/DataTableGrid";
+import styles from './OrderManagement.module.scss';
+import SearchInput from "../../component/SearchInput";
 
 // 테이블 컬럼 설정
 const columns = [
@@ -26,22 +26,20 @@ const mockData = Array.from({length: 50}, (_, index) => ({
 }));
 
 const OrderManagement = () => {
+    const placeHolder = "고객 이름, 상품 이름 검색"
+    // 추후에 api 개발시 연결
+    const searchFn = (searchInput : string) => {
+        console.log(searchInput);
+    }
+
+
     return (
         <div className={styles.container}>
             <div className={styles.header}>
                 <span className={styles.title}>주문관리</span>
                 <div className={styles.searchFilterContainer}>
-                    <div className={styles.filterItem}>
-                        <span className={styles.label}>검색</span>
-                        <div className={styles.inputWrapper}>
-                            <input
-                                type="text"
-                                placeholder="검색어를 입력해 주세요"
-                                className={styles.searchInput}
-                            />
-                            <i className="fas fa-search"></i>
-                        </div>
-                    </div>
+                    <SearchInput placeHolder={placeHolder} searchFn={searchFn}/>
+
                     <div className={styles.filterItem}>
                         <span className={styles.label}>주문 상태</span>
                         <select className={styles.select}>

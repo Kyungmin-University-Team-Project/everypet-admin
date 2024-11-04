@@ -1,13 +1,13 @@
 .container {
   width: 300px;
-  min-width: 180px;
+  min-width: 200px;
   border-right: 1px solid var(--primary-border);
 
   .header {
     display: flex;
     flex-direction: column;
 
-    margin-left: 20px;
+    padding-left: 20px;
 
     color: var(--primary-color);
 
@@ -21,19 +21,24 @@
   .navContainer {
     display: flex;
     flex-direction: column;
+    align-items: center;
+
+    gap: 16px;
 
     .nav {
       display: flex;
 
+      width: 85%;
+
       align-items: center;
       text-decoration: none;
 
-
-      font-size: 18px;
       font-weight: bold;
       color: #000000;
 
-      padding: 10px 0 10px 20px;
+      padding: 5px;
+
+      border-radius: 10px;
 
       transition: background-color, color 0.2s ease-out;
 
@@ -49,12 +54,14 @@
     }
 
     .icon {
-      margin-right: 10px;
-      font-size: 36px;
+      font-size: 28px;
+
+      margin-left: 10px;
     }
 
     .label {
       font-size: 18px;
+      margin: auto;
     }
 
   }

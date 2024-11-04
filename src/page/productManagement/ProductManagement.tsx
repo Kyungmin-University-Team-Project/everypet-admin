@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './ProductManagement.module.scss'
 import DataTableGrid from "../../component/DataTableGrid";
 import {productMockData} from "../../utils/common/ProductRandom";
+import SearchInput from "../../component/SearchInput";
 
 // 테이블 헤더 설정
 const headers = [
@@ -15,22 +16,20 @@ const headers = [
 ];
 
 const ProductManagement = () => {
+
+    const placeHolder = "카테 고리, 상품 이름 검색"
+
+    // 추후에 api 개발시 연결
+    const searchFn = (searchInput : string) => {
+        console.log(searchInput);
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.header}>
                 <span className={styles.title}>상품관리</span>
                 <div className={styles.searchFilterContainer}>
-                    <div className={styles.filterItem}>
-                        <span className={styles.label}>검색</span>
-                        <div className={styles.inputWrapper}>
-                            <input
-                                type="text"
-                                placeholder="검색어를 입력해 주세요"
-                                className={styles.searchInput}
-                            />
-                            <i className="fas fa-search"></i> {/* Font Awesome 아이콘 */}
-                        </div>
-                    </div>
+                    <SearchInput placeHolder={placeHolder} searchFn={searchFn}/>
                     <div className={styles.filterItem}>
                         <span className={styles.label}>판매 상태</span>
                         <select className={styles.select}>
