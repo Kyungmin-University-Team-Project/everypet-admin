@@ -4,45 +4,38 @@ import axiosInstance from "../../utils/axios/axiosInstance";
 import {API_URL} from "../../api/api";
 
 interface ProductInsert {
-    memberId: string;
-    numberOfProduct: number;
-    productDescriptionImage: File | null;
-    productDiscountRate: number;
-    productId: string;
-    productImage: File | null;
-    productMainCategory: string;
     productName: string;
-    productPrice: number;
-    productSalesStatusYN: string;
+    productPrice: string;
+    productDiscountRate: string;
+    productImage: File | null;
+    numberOfProduct: string;
+    productDescriptionImage: File | null;
+    productMainCategory: string;
     productSubCategory: string;
+    productSalesStatusYN: string;
 }
 
 const ProductOrderModal = () => {
-    const productIdUUID = crypto.randomUUID();
     const [open, setOpen] = useState(false);
     const modalBackground = useRef(null);
     const [data, setData] = useState<ProductInsert>({
-        memberId: '',
-        numberOfProduct: 0,
-        productDescriptionImage: null,
-        productDiscountRate: 0,
-        productId: productIdUUID,
-        productImage: null,
-        productMainCategory: '',
         productName: '',
-        productPrice: 0,
-        productSalesStatusYN: 'Y',
+        productPrice: '',
+        productDiscountRate: '',
+        productImage:  null,
+        numberOfProduct: '',
+        productDescriptionImage: null,
+        productMainCategory: '',
         productSubCategory: '',
+        productSalesStatusYN: '',
     });
-
+    const newFormData = new FormData();
     const handleOnSubmit = async () => {
         // formData 생성
-        const newFormData = new FormData();
 
         // form data 추가
-        newFormData.append('memberId', data.memberId);
-        newFormData.append('numberOfProduct', data.numberOfProduct.toString());
-        newFormData.append('productDiscountRate', data.productDiscountRate.toString());
+        newFormData.append('productName', data.productName.toString());
+        newFormData.append('productPrice', data.productPrice.toString());
 
         if (data.productDescriptionImage) {
             newFormData.append('productDescriptionImage', data.productDescriptionImage);
@@ -51,11 +44,12 @@ const ProductOrderModal = () => {
             newFormData.append('productImage', data.productImage);
         }
 
-        newFormData.append('productPrice', data.productPrice.toString());
-        newFormData.append('productMainCategory', data.productMainCategory);
+        newFormData.append('productDiscountRate', data.productDiscountRate.toString());
+        newFormData.append('numberOfProduct', data.numberOfProduct);
         newFormData.append('productName', data.productName);
-        newFormData.append('productSalesStatusYN', data.productSalesStatusYN);
+        newFormData.append('productMainCategory', data.productMainCategory);
         newFormData.append('productSubCategory', data.productSubCategory);
+        newFormData.append('productSalesStatusYN', data.productSalesStatusYN);
 
         // formData는  multipart/form-data로 보내야한다.
         try {
@@ -77,10 +71,13 @@ const ProductOrderModal = () => {
 
         if (type === 'file' && files) {
             const maxSize = 5 * 1024 * 1024;
-            const file = files[0]?.size;
             const isImage = files[0].type.startsWith('image/');
+
+            for (let i = 0; i<files.length; i++) {
+                const file = files[i];
+                const fileSize = file.size;
                 if (isImage) {
-                    if (file > maxSize) {
+                    if (fileSize > maxSize) {
                         alert('file 사이즈가 5MB을 초과 합니다.')
                         setData((prev) => ({
                             ...prev,
@@ -93,6 +90,7 @@ const ProductOrderModal = () => {
                         }));
                     }
                 }
+            }
         } else {
             const valued = type === 'number' ? Number(e.target.value) : e.target.value;
             setData((prev) => ({
@@ -113,13 +111,13 @@ const ProductOrderModal = () => {
                               }
                           }}>
                         <div className={styles.modal_content}>
-                            <input type="text" name="memberId" onChange={handleOnChange}
+                            <input type="text" name="productName" onChange={handleOnChange}
                                    maxLength={20}
-                                   placeholder="아이디"
-                            required/>
-                            <input type="number" name="numberOfProduct" onChange={handleOnChange}
-                                   placeholder="제품수량"
-                                   value={data.numberOfProduct}
+                                   placeholder="상품 이름"
+                                   required/>
+                            <input type="text" name="productPrice" onChange={handleOnChange}
+                                   placeholder="가격"
+                                   value={data.productPrice}
                                    onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
                                        if (e.target.value.length > e.target.maxLength) {
                                            e.target.value = e.target.value.slice(0, e.target.maxLength)
@@ -127,15 +125,21 @@ const ProductOrderModal = () => {
                                    }}
                                    maxLength={4}
                             />
-                            <input type="file" name="productImage"
-                                   accept=".jpg, .jpeg, .png"
-                                   onChange={handleOnChange}
-                                   placeholder='상품 설명 이미지 삽입(이미지 파일만 가능)'/>
-                            <input type="file" name="productDescriptionImage"
-                                   accept=".jpg, .jpeg, .png"
-                                   onChange={handleOnChange}
-                                   placeholder='상품 대표 이미지 삽입(이미지 파일만 가능)'/>
-                            <input type="number" name="productDiscountRate"
+                            <label htmlFor="productImage">
+                                <input type="file" name="productImage"
+                                       accept=".jpg, .jpeg, .png"
+                                       onChange={handleOnChange}
+                                       placeholder='상품 설명 이미지 삽입(이미지 파일만 가능)'/>
+                            </label>
+                            <label htmlFor="productDescriptionImage">
+                                <input type="file" name="productDescriptionImage"
+                                       accept=".jpg, .jpeg, .png"
+                                       onChange={handleOnChange}
+                                       multiple
+                                       placeholder='상품 대표 이미지 삽입(이미지 파일만 가능)'/>
+                            </label>
+                            <input type="text" name="productDiscountRate"
+                                   value={data.productDiscountRate}
                                    onChange={handleOnChange}
                                    onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
                                        if (e.target.value.length > e.target.maxLength) {
@@ -144,15 +148,20 @@ const ProductOrderModal = () => {
                                    }}
                                    maxLength={2}
                                    placeholder="할인율"/>
-                            <input type="text" name="productMainCategory"
+                            <input type="text" name="numberOfProduct"
+                                   value={data.numberOfProduct}
                                    onChange={handleOnChange}
-                                   placeholder="카테고리(강아지)"
+                                   placeholder="제품수량"
                                    maxLength={10}
                             />
-                            <input type="text" name="productName" onChange={handleOnChange}
-                                   placeholder="상품 이름"/>
-                            <input type="number" name="productPrice" onChange={handleOnChange}
-                                   placeholder="가격"
+                            <input type="text"
+                                   value={data.productMainCategory}
+                                   name="productMainCategory" onChange={handleOnChange}
+                                   placeholder="대표 카테고리(cat)"/>
+                            <input type="text"
+                                   value={data.productSubCategory}
+                                   name="productSubCategory" onChange={handleOnChange}
+                                   placeholder="서브 카테고리(feed)"
                                    onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
                                        if (e.target.value.length > e.target.maxLength) {
                                            e.target.value = e.target.value.slice(0, e.target.maxLength)
@@ -160,14 +169,22 @@ const ProductOrderModal = () => {
                                    }}
                                    maxLength={7}
                             />
-                            <input type="text" name="productSalesStatusYN" onChange={handleOnChange}
-                                   placeholder="세일 동의(Y/N)만 입력"
-                                   maxLength={1}
-                            />
-                            <input type="text" name="productSubCategory" onChange={handleOnChange}
-                                   placeholder="사료(장난감)"
-                                   maxLength={10}
-                            />
+                            <div className={styles.input_radio_box}>
+                                <p>상품 노출 상태</p>
+                                <label>Y</label>
+                                <input className={styles.input_radio} type="radio" name="productSalesStatusYN" value="Y"
+                                       checked={data.productSalesStatusYN === "Y"}
+                                       onChange={handleOnChange}/>
+
+                                <label>
+                                    N
+                                </label>
+                                <input className={styles.input_radio} type="radio" name="productSalesStatusYN" value="N"
+                                       checked={data.productSalesStatusYN === "N"}
+                                       onChange={handleOnChange}/>
+                                </div>
+
+
                             <button onClick={() => {
                                 handleOnSubmit();
                                 setOpen(false);
@@ -182,3 +199,4 @@ const ProductOrderModal = () => {
 };
 
 export default ProductOrderModal;
+
