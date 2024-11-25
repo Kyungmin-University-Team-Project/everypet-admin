@@ -66,7 +66,7 @@ const ProductOrderModal = () => {
 
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         // type 파일인지 아닌지 확인 후 업데이트
-        // files 파일 입력에서 선택한 파일을 상태에 추가 !
+        // files 파일 입력에서 선택한 파일을 상태에 추가 ! !
         const { name, files, type } = e.target;
 
         if (type === 'file' && files) {
