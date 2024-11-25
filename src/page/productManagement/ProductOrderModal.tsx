@@ -164,7 +164,7 @@ const ProductOrderModal = () => {
                                            e.target.value = e.target.value.slice(0, e.target.maxLength)
                                        }
                                    }}
-                                   maxLength={7}
+                                   maxLength={20}
                             />
                             <div className={styles.input_radio_box}>
                                 <p>상품 노출 상태</p>
