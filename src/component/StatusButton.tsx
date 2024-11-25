@@ -9,6 +9,18 @@ interface StatusButtonProps {
     answerStatus?: string;
 }
 
+/**
+ * StatusButton 컴포넌트의 props입니다.
+ * 각 상태값을 옵셔널로 받아 해당 상태에 맞는 스타일 클래스를 반환합니다.
+ *
+ * @param orderStatus - 주문 상태 (예: '접수전', '접수완료', '환불요청', '주문취소').
+ * @param shippingStatus - 배송 상태 (예: '배송전', '배송중', '배송취소', '배송완료').
+ * @param salesStatus - 판매 상태 (예: '판매중', '매진').
+ * @param answerStatus - 응답 상태 (예: '완료', '미완료').
+ *
+ * @returns 상태에 맞는 버튼을 렌더링합니다.
+ */
+
 const StatusButton = ({
                           orderStatus,
                           shippingStatus,
@@ -17,7 +29,7 @@ const StatusButton = ({
                       }: StatusButtonProps) => {
 
     // 각 상태에 맞는 클래스 이름 반환
-    const getStatusClass = (): string => {
+    const getStatusClass = () => {
         // orderStatus 조건
         if (orderStatus) {
             switch (orderStatus) {
@@ -69,7 +81,6 @@ const StatusButton = ({
                     return '';
             }
         }
-        return '';
     };
 
     return (

@@ -1,6 +1,7 @@
 import React, {useRef, useState} from 'react';
 import styles from "./ProductManagement.module.scss";
 import axiosInstance from "../../utils/axios/axiosInstance";
+import {API_URL} from "../../api/api";
 
 interface ProductInsert {
     memberId: string;
@@ -58,7 +59,7 @@ const ProductOrderModal = () => {
 
         // formData는  multipart/form-data로 보내야한다.
         try {
-            const response = await axiosInstance.post('http://localhost:8080/product/insert', newFormData, {
+            const response = await axiosInstance.post(`${API_URL}/product/insert`, newFormData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 }
