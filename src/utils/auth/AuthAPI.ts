@@ -15,7 +15,7 @@ api.interceptors.request.use(
         if (error.response && error.response.status === 401) {
             try {
                 let errorConfig: AxiosRequestConfig = error.config || {};
-                const { data } = await axios.post(`${API_URL}/access/refresh`);
+                const { data } = await axios.post(`/access/refresh`);
                 if (data) {
                     const { access } = data;
                     localStorage.removeItem('every-pet-ceo-access');
@@ -40,7 +40,7 @@ export const login = async ({ memberId, memberPwd }: LoginData): Promise<any> =>
     const data = { memberId, memberPwd };
 
     try {
-        const response: AxiosResponse<any> = await api.post(`${API_URL}/signin`, data);
+        const response: AxiosResponse<any> = await api.post(`/signin`, data);
 
         const access = response.headers['access'];
         const decodedToken: any = jwtDecode(access);
@@ -65,7 +65,7 @@ export const login = async ({ memberId, memberPwd }: LoginData): Promise<any> =>
 
 export const signUpLogin = async (user: Join): Promise<any> => {
     try {
-        const response: AxiosResponse<any> = await api.post(`${API_URL}/member/signup`, user);
+        const response: AxiosResponse<any> = await api.post(`/member/signup`, user);
         return response.data;
     } catch (error) {
         if (axios.isAxiosError(error) && error.response) {
@@ -81,7 +81,7 @@ export const signUpLogin = async (user: Join): Promise<any> => {
 
 export const sendVerificationEmail = async ({ purpose, to }: { purpose: string; to: string }): Promise<{ success: boolean }> => {
     const data = { purpose, to };
-    const response = await api.post(`${API_URL}/send-mail/code`, data, {
+    const response = await api.post(`/send-mail/code`, data, {
         headers: {
             'Content-Type': 'application/json'
         }
@@ -92,7 +92,7 @@ export const sendVerificationEmail = async ({ purpose, to }: { purpose: string; 
 
 export const verifyCode = async ({ purpose, code }: { purpose: string; code: string; }): Promise<{ success: boolean }> => {
     const data = { purpose, code };
-    const response = await api.post(`${API_URL}/send-mail/code/verify`, data, {
+    const response = await api.post(`/send-mail/code/verify`, data, {
         headers: {
             'Content-Type': 'application/json'
         }
@@ -104,7 +104,7 @@ export const verifyCode = async ({ purpose, code }: { purpose: string; code: str
 // 비밀번호 찾기
 export const passwordFind = async ({ email, memberId }: { email: string, memberId: string }) => {
     const data = { email, memberId };
-    const response = await api.post(`${API_URL}/member/password/reset`, data, {
+    const response = await api.post(`/member/password/reset`, data, {
         headers: {
             'Content-Type': 'application/json'
         }
