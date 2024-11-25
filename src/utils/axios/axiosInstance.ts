@@ -1,10 +1,11 @@
 import axios from "axios";
 import { reissueToken } from "../auth/token";
-import CryptoJS from 'crypto-js';  // CryptoJS 가져오기
+import CryptoJS from 'crypto-js';
+import {API_URL} from "../../api/api";  // CryptoJS 가져오기
 
 const secretKey = process.env.REACT_APP_CRYPTOJS_KEY;
 const axiosInstance = axios.create({
-    baseURL: 'http://localhost:8080',
+    baseURL: API_URL,
     headers: {
         'Content-Type': 'application/json',
     },
