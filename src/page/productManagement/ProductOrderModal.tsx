@@ -105,12 +105,9 @@ const ProductOrderModal = () => {
             {
                 open && (
                     <form className={styles.form_container} ref={modalBackground}
-                          onClick={e => {
-                              if (e.target === modalBackground.current) {
-                                  setOpen(false);
-                              }
-                          }}>
+                         >
                         <div className={styles.modal_content}>
+
                             <input type="text" name="productName" onChange={handleOnChange}
                                    maxLength={20}
                                    placeholder="상품 이름"
@@ -123,7 +120,7 @@ const ProductOrderModal = () => {
                                            e.target.value = e.target.value.slice(0, e.target.maxLength)
                                        }
                                    }}
-                                   maxLength={4}
+                                   maxLength={8}
                             />
                             <label htmlFor="productImage">
                                 <input type="file" name="productImage"
@@ -182,7 +179,7 @@ const ProductOrderModal = () => {
                                 <input className={styles.input_radio} type="radio" name="productSalesStatusYN" value="N"
                                        checked={data.productSalesStatusYN === "N"}
                                        onChange={handleOnChange}/>
-                                </div>
+                            </div>
 
 
                             <button onClick={() => {
@@ -190,6 +187,14 @@ const ProductOrderModal = () => {
                                 setOpen(false);
                             }}>상품 등록
                             </button>
+                            <button
+                                onClick={e => {
+                                    if (e.target === modalBackground.current) {
+                                        setOpen(false);
+                                    }
+                                }}
+                            className={styles.canse_btn}
+                            >취소</button>
                         </div>
                     </form>
                 )
