@@ -70,7 +70,7 @@ const ProductOrderModal = () => {
         const { name, files, type } = e.target;
 
         if (type === 'file' && files) {
-            const maxSize = 5 * 1024 * 1024;
+            const maxSize = 100 * 1024 * 1024;
             const isImage = files[0].type.startsWith('image/');
 
             for (let i = 0; i<files.length; i++) {
