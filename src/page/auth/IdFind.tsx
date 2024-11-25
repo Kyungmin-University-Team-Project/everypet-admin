@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import styles from "./IdFind.module.scss";
 
-interface IdFind {
+interface AuthFind {
     email: string;
     name: string;
     id?: string;
@@ -10,7 +10,7 @@ interface IdFind {
 
 const IdFind = () => {
     const [activeTab, setActiveTab] = useState<'id' | 'password'>('id'); // 탭 상태
-    const [user, setUser] = useState<IdFind>({
+    const [user, setUser] = useState<AuthFind>({
         email: "",
         name: "",
         id: "",

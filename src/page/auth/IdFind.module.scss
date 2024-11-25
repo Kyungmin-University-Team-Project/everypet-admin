@@ -26,7 +26,7 @@
       &.active {
         background-color: #fff;
         color: #333;
-        border-bottom: 2px solid #4a8cf0;
+        border-bottom: 2px solid var(--primary-color);
       }
     }
   }
@@ -38,7 +38,7 @@
       font-size: 1.5rem;
       font-weight: bold;
       margin-bottom: 20px;
-      color: #333;
+      color: black;
       text-align: center;
     }
 
@@ -58,21 +58,21 @@
         padding: 12px;
         font-size: 1rem;
         font-weight: bold;
-        background-color: #4a8cf0;
-        color: #fff;
+        background-color: var(--primary-color);
+        color: var(--text-color);
         border: none;
         border-radius: 5px;
         cursor: pointer;
         transition: background-color 0.3s ease;
 
         &:hover {
-          background-color: #3a78d4;
+          background-color: var(--secondary-color);
         }
       }
       .find_input {
         width: 100%;
         padding: 10px;
-        border: 1px solid #ccc;
+        border: 1px solid var(--gray-light);
         border-radius: 4px;
         font-size: 1rem;
         box-sizing: border-box;

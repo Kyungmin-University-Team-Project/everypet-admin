@@ -12,7 +12,6 @@ import Login from "./page/auth/Login";
 import Agreement from "./page/auth/Agreement";
 import Signup from "./page/auth/Signup";
 import IdFind from "./page/auth/IdFind";
-import PasswordFind from "./page/auth/PasswordFind";
 import {createRoot} from "react-dom/client";
 import {Provider} from "react-redux";
 import store from "./redux/store/store";
@@ -59,7 +58,6 @@ const router = createBrowserRouter([
             {path: "agreement", element: <Agreement/>},
             {path: "signup", element: <Signup/>},
             {path: "idFind", element: <IdFind/>},
-            {path: "passwordFind", element: <PasswordFind/>},
         ],
     },
 ]);
