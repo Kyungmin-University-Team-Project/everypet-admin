@@ -111,7 +111,7 @@ const ProductOrderModal = () => {
                         <div className={styles.modal_content}>
 
                             <input type="text" name="productName" onChange={handleOnChange}
-                                   maxLength={20}
+                                   maxLength={40}
                                    placeholder="상품 이름"
                                    required/>
                             <input type="text" name="productPrice" onChange={handleOnChange}
