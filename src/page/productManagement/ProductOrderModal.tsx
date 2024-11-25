@@ -58,8 +58,10 @@ const ProductOrderModal = () => {
                     "Content-Type": "multipart/form-data",
                 }
             });
+            alert('성공적으로 올라갔습니다 !')
             console.log(response);
         } catch (error) {
+            alert('실패했습니다.')
             console.error('Error:', error);
         }
     };
